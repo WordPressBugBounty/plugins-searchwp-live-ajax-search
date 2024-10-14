@@ -3,7 +3,7 @@ Contributors: jchristopher, pavloopanasenko
 Tags: search, live, ajax
 Requires at least: 4.8
 Tested up to: 6.5
-Stable tag: 1.8.2
+Stable tag: 1.8.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -73,6 +73,10 @@ SearchWP Live Ajax Search uses a filter — <a href="https://searchwp.com/exten
 4. SearchWP Live Ajax Search Forms embed options
 
 == Changelog ==
+
+= 1.8.3 =
+* Prevents issues with caching plugins in some cases.
+* Adds support for loading a custom template from a user specified directory path.
 
 = 1.8.2 =
 * Fixes integration with Relevanssi Premium.

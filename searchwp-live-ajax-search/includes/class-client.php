@@ -40,8 +40,6 @@ class SearchWP_Live_Search_Client {
 	 */
 	public function search() {
 
-		$this->check_ajax_permissions();
-
 		if ( empty( $_REQUEST['swpquery'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			die();
 		}
@@ -185,18 +183,6 @@ class SearchWP_Live_Search_Client {
 		return isset( $_REQUEST['posts_per_page'] ) // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			? intval( $_REQUEST['posts_per_page'] ) // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			: $default_posts_per_page;
-	}
-
-	/**
-	 * Check AJAX permissions for the current search.
-	 *
-	 * @since 1.8.0
-	 *
-	 * @return void
-	 */
-	public function check_ajax_permissions() {
-
-		check_ajax_referer( 'searchwp_live_search_client_nonce', 'searchwp_live_search_client_nonce', true );
 	}
 
 	/**

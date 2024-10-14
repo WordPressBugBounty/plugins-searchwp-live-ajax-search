@@ -280,12 +280,11 @@ class SearchWP_Live_Search_Form {
 
 		// Set up our parameters.
 		$params = [
-			'ajaxurl'                           => esc_url( $ajaxurl ),
-			'origin_id'                         => get_queried_object_id(),
-			'config'                            => $this->configs,
-			'msg_no_config_found'               => esc_html__( 'No valid SearchWP Live Search configuration found!', 'searchwp-live-ajax-search' ),
-			'aria_instructions'                 => esc_html__( 'When autocomplete results are available use up and down arrows to review and enter to go to the desired page. Touch device users, explore by touch or with swipe gestures.' , 'searchwp-live-ajax-search' ),
-			'searchwp_live_search_client_nonce' => wp_create_nonce( 'searchwp_live_search_client_nonce' ),
+			'ajaxurl'             => esc_url( $ajaxurl ),
+			'origin_id'           => get_queried_object_id(),
+			'config'              => $this->configs,
+			'msg_no_config_found' => esc_html__( 'No valid SearchWP Live Search configuration found!', 'searchwp-live-ajax-search' ),
+			'aria_instructions'   => esc_html__( 'When autocomplete results are available use up and down arrows to review and enter to go to the desired page. Touch device users, explore by touch or with swipe gestures.' , 'searchwp-live-ajax-search' ),
 		];
 
 		// We need to JSON encode the configs.

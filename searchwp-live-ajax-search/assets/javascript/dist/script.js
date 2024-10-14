@@ -567,7 +567,6 @@
     			values += '&action=searchwp_live_search&swpengine=' + $input.data( 'swpengine' );
     			values += '&swpquery=' + encodeURIComponent( $input.val() );
     			values += '&origin_id=' + parseInt( searchwp_live_search_params.origin_id,10 );
-    			values += '&searchwp_live_search_client_nonce=' + searchwp_live_search_params.searchwp_live_search_client_nonce;
 
     			if ( action.indexOf( '?' ) !== -1 ) {
     				action  = action.split( '?' );
@@ -656,7 +655,7 @@
     		this.each(
     			function () {
     				if ( ! jQuery.data( this, "plugin_" + plugin_name ) ) {
-    					jQuery.data( this, "plugin_" + plugin_name, new SearchwpLiveSearch( jQuery( this ), options ) );
+    					jQuery.data( this, "plugin_" + plugin_name, new SearchwpLiveSearch( jQuery( this )) );
     				}
     			}
     		);
@@ -690,4 +689,4 @@
     	}
     );
 
-}());
+})();

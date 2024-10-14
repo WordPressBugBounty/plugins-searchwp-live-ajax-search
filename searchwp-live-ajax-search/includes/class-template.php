@@ -332,6 +332,12 @@ class SearchWP_Live_Search_Template {
 
 		$template_name = ltrim( $template_name, '/' );
 
+		// Check custom template directory.
+		$custom_template_dir = trailingslashit( $template_dir ) . $template_name;
+		if ( file_exists( $custom_template_dir ) ) {
+			return $custom_template_dir;
+		}
+
 		// Check the child theme first.
 		$maybe_child_theme = trailingslashit( get_stylesheet_directory() ) . trailingslashit( $template_dir ) . $template_name;
 		if ( file_exists( $maybe_child_theme ) ) {

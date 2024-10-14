@@ -1,6 +1,6 @@
 {
   "name": "searchwp-live-ajax-search",
-  "version": "1.8.2",
+  "version": "1.8.3",
   "description": "Enhance your search forms with live search, powered by SearchWP (if installed)",
   "main": "assets/javascript/src/searchwp-live-ajax-search.js",
   "scripts": {

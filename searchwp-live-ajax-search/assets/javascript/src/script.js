@@ -376,7 +376,6 @@ import {Spinner} from 'spin.js';
 			values += '&action=searchwp_live_search&swpengine=' + $input.data( 'swpengine' );
 			values += '&swpquery=' + encodeURIComponent( $input.val() );
 			values += '&origin_id=' + parseInt( searchwp_live_search_params.origin_id,10 );
-			values += '&searchwp_live_search_client_nonce=' + searchwp_live_search_params.searchwp_live_search_client_nonce;
 
 			if ( action.indexOf( '?' ) !== -1 ) {
 				action  = action.split( '?' );
