@@ -403,6 +403,13 @@ class SearchWP_Live_Search_Template {
 	 */
 	public static function get_display_data( $result ) {
 
+		// During a multisite search, results can be from multiple blogs.
+		// If the result is from a different blog than the current one, we need to switch to that blog before fetching the result's data.
+		$switched_blog = self::maybe_switch_blog( $result );
+
+		// Get the native entry for the result.
+		$result = self::maybe_get_native_entry( $result );
+
 		/**
 		 * Filter the result object.
 		 *
@@ -473,8 +480,74 @@ class SearchWP_Live_Search_Template {
 		 */
 		$data = apply_filters( 'searchwp_live_search_results_entry_data', empty( $data ) ? $defaults : $data, $result );
 
+		if ( $switched_blog ) {
+			restore_current_blog();
+		}
+
 		// Make sure that default array structure is preserved.
 		return is_array( $data ) ? array_merge( $defaults, $data ) : $defaults;
+	}
+
+	/**
+	 * Switch to the blog of the result.
+	 *
+	 * @since 1.8.4
+	 *
+	 * @param mixed $result Result object.
+	 */
+	private static function maybe_switch_blog( $result ) {
+
+		// Only switch to the blog if SearchWP is active.
+		if ( ! class_exists( 'SearchWP' ) ) {
+			return false;
+		}
+
+		if (
+			$result instanceof \stdClass &&
+			property_exists( $result, 'site' ) &&
+			absint( $result->site ) !== get_current_blog_id()
+		) {
+			switch_to_blog( absint( $result->site ) );
+
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Get the native entry of the result.
+	 *
+	 * @since 1.8.4
+	 *
+	 * @param mixed $result Result object.
+	 *
+	 * @return \WP_Post|\WP_User|\WP_Term|mixed
+	 */
+	private static function maybe_get_native_entry( $result ) {
+
+		// If SearchWP is not active, the result is already the native entry.
+		if ( ! class_exists( 'SearchWP\Entry' ) ) {
+			return $result;
+		}
+
+		if ( $result instanceof \stdClass && property_exists( $result, 'source' ) ) {
+
+			$id = absint( $result->id );
+
+			if ( strpos( $result->source, 'post' . SEARCHWP_SEPARATOR ) === 0 ) {
+				$result = get_post( $id );
+			} elseif ( strpos( $result->source, 'taxonomy' . SEARCHWP_SEPARATOR ) === 0 ) {
+				$result = get_term( $id );
+			} elseif ( $result->source === 'user' ) {
+				$result = get_user_by( 'ID', $id );
+			}
+		} elseif ( $result instanceof \SearchWP\Entry ) {
+
+			$result = $result->native();
+		}
+
+		return $result;
 	}
 
 	/**

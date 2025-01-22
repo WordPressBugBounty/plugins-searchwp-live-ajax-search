@@ -3,7 +3,7 @@ Contributors: jchristopher, pavloopanasenko
 Tags: search, live, ajax
 Requires at least: 4.8
 Tested up to: 6.5
-Stable tag: 1.8.3
+Stable tag: 1.8.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -73,6 +73,12 @@ SearchWP Live Ajax Search uses a filter — <a href="https://searchwp.com/exten
 4. SearchWP Live Ajax Search Forms embed options
 
 == Changelog ==
+
+= 1.8.4 =
+* Adds support for SearchWP multisite search.
+* Improves search results dropdown role attribute, for better accessibility.
+* Adjust results width to match Gutenberg form width when the search button is inside.
+* Fixes the display of the results dropdown within a custom parent element.
 
 = 1.8.3 =
 * Prevents issues with caching plugins in some cases.
