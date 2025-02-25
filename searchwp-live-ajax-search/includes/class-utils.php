@@ -60,6 +60,16 @@ class SearchWP_Live_Search_Utils {
 	}
 
 	/**
+	 * Check if SearchWP Modal Form plugin is active.
+	 *
+	 * @since 1.8.5
+	 */
+	public static function is_modal_form_active() {
+
+		return class_exists( 'SearchWP_Modal_Form' );
+	}
+
+	/**
 	 * Helper function to determine if loading a Live Ajax Search admin settings page.
 	 *
 	 * @since 1.7.0

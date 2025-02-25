@@ -1355,7 +1355,17 @@ class SearchWP_Live_Search_Settings {
 	public static function render_searchwp_disabled() {
 
 		if ( utils::is_swp_live_search_admin_page( self::$slug, 'search-modal' ) ) {
-			searchwp_live_search()->get( 'ModalFormPreview' )->render();
+
+			if ( Utils::is_modal_form_active() ) {
+				/**
+				 * Action to render the modal form settings.
+				 *
+				 * @since 1.8.0
+				 */
+				do_action( 'searchwp_live_search_modal_form_render' );
+			} else {
+				searchwp_live_search()->get( 'ModalFormPreview' )->render();
+			}
 
 			return;
 		}

@@ -148,9 +148,11 @@ class SearchWP_Live_Search {
 				->incl( 'Algorithm/EnginesPreview.php' )
 				->register( 'EnginesPreview' );
 
-			searchwp_live_search()
-				->incl( 'ModalForm/ModalFormPreview.php' )
-				->register( 'ModalFormPreview' );
+			if ( ! Utils::is_modal_form_active() ) {
+				searchwp_live_search()
+					->incl( 'ModalForm/ModalFormPreview.php' )
+					->register( 'ModalFormPreview' );
+			}
 		}
 
 		SearchWP_Live_Search()
