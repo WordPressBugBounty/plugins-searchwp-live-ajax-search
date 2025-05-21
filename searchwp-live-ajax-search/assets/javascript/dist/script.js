@@ -269,7 +269,8 @@
 
     				this.results_el = jQuery( '#' + this.results_id );
     				this.position_results();
-    				jQuery( window ).resize(
+    				jQuery( window ).on(
+    					'resize',
     					function () {
     						self.position_results();
     					}
@@ -301,7 +302,8 @@
     				}
 
     				// Bind to keyup.
-    				$input.keyup(
+    				$input.on(
+    					'keyup',
     					function ( e ) {
     						if ( jQuery.inArray( e.keyCode, self.a11y_keys ) > -1 ) {
     							return;
@@ -334,11 +336,15 @@
     						}
     						self.position_results();
     					}
-    				).keyup( jQuery.proxy( this.maybe_search, this ) );
+    				).on(
+    					'keyup',
+    					jQuery.proxy( this.maybe_search, this )
+    				);
 
     				// Destroy the results when input focus is lost.
     				if ( this.config.results_destroy_on_blur || typeof this.config.results_destroy_on_blur === 'undefined' ) {
-    					jQuery( 'html' ).click(
+    					jQuery( 'html' ).on(
+    						'click',
     						function ( e ) {
     							// Only destroy the results if the click was placed outside the results' element.
     							if ( ! jQuery( e.target ).parents( '.searchwp-live-search-results' ).length ) {
@@ -347,7 +353,8 @@
     						}
     					);
     				}
-    				$input.click(
+    				$input.on(
+    					'click',
     					function ( e ) {
     						e.stopPropagation();
     					}
@@ -456,8 +463,9 @@
     		position_results: function () {
     			var $input                  = this.input_el,
     				$parent_form            = $input.parents( 'form:eq(0)' ),
-    				$results                = this.results_el,
+    				$input_wrapper		    = $input.parents( '.wp-block-search__inside-wrapper' ),
     				isGutenbergButtonInside = $parent_form.hasClass( 'wp-block-search__button-inside' ),
+    				$results                = this.results_el,
     				input_offset	        = {},
     				results_top_offset      = 0;
 
@@ -466,9 +474,9 @@
     				return;
     			}
 
-    			// If this is a Gutenberg search block and the button is placed inside, we need to position the results relative to the form.
-    			if ( isGutenbergButtonInside ) {
-    				$input = $parent_form;
+    			// If this is a Gutenberg search block and the button is placed inside, we need to position the results relative to the input parent.
+    			if ( $input_wrapper.length && isGutenbergButtonInside ) {
+    				$input = $input_wrapper;
     			}
 
     			input_offset = $input.offset();

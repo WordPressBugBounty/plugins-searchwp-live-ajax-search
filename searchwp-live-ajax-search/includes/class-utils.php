@@ -573,4 +573,19 @@ class SearchWP_Live_Search_Utils {
 			);
 		}
 	}
+
+	/**
+	 * Get the debug suffix for asset URLs.
+	 *
+	 * Returns an empty string if SCRIPT_DEBUG is true or if script_debug is set in the URL,
+	 * otherwise returns '.min'.
+	 *
+	 * @since 1.8.6
+	 *
+	 * @return string
+	 */
+	public static function get_debug_assets_suffix() {
+
+		return ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG === true ) || ( isset( $_GET['script_debug'] ) ) ? '' : '.min'; // phpcs:ignore WordPress.Security.NonceVerification
+	}
 }

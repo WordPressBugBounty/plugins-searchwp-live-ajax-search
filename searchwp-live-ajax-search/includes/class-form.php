@@ -1,5 +1,7 @@
 <?php
 
+use SearchWP_Live_Search_Utils as Utils;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -245,17 +247,17 @@ class SearchWP_Live_Search_Form {
 	 */
 	public function assets() {
 
+		// If WP is in script debug, or we pass ?script_debug in a URL - set debug to true.
+		$debug = Utils::get_debug_assets_suffix();
+
 		wp_enqueue_style(
 			'searchwp-live-search',
-			SEARCHWP_LIVE_SEARCH_PLUGIN_URL . 'assets/styles/style.css',
+			SEARCHWP_LIVE_SEARCH_PLUGIN_URL . "assets/styles/style{$debug}.css",
 			null,
 			SEARCHWP_LIVE_SEARCH_VERSION
 		);
 
 		wp_enqueue_script( 'jquery' );
-
-		// If WP is in script debug, or we pass ?script_debug in a URL - set debug to true.
-		$debug = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG === true ) || ( isset( $_GET['script_debug'] ) ) ? '' : '.min'; // phpcs:ignore WordPress.Security.NonceVerification
 
 		wp_register_script(
 			'swp-live-search-client',

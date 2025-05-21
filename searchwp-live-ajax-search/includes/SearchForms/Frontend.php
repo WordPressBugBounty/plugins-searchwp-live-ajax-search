@@ -1,6 +1,7 @@
 <?php
 
 use SearchWP_Live_Search_Storage as Storage;
+use SearchWP_Live_Search_Utils as Utils;
 
 /**
  * Display search forms on the frontend.
@@ -83,9 +84,12 @@ class SearchWP_Live_Search_Frontend {
 	 */
 	public static function assets() {
 
+		// If WP is in script debug, or we pass ?script_debug in a URL - set debug to true.
+		$debug = Utils::get_debug_assets_suffix();
+
 		wp_register_style(
 			'searchwp-forms',
-			SEARCHWP_LIVE_SEARCH_PLUGIN_URL . 'assets/styles/frontend/search-forms.css',
+			SEARCHWP_LIVE_SEARCH_PLUGIN_URL . "assets/styles/frontend/search-forms{$debug}.css",
 			[],
 			SEARCHWP_LIVE_SEARCH_VERSION
 		);
