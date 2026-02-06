@@ -2,8 +2,8 @@
 Contributors: jchristopher, pavloopanasenko
 Tags: search, live, ajax
 Requires at least: 4.8
-Tested up to: 6.8
-Stable tag: 1.8.6
+Tested up to: 6.9
+Stable tag: 1.8.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -73,6 +73,14 @@ SearchWP Live Ajax Search uses a filter — <a href="https://searchwp.com/exten
 4. SearchWP Live Ajax Search Forms embed options
 
 == Changelog ==
+
+= 1.8.7 =
+* Updated compatibility with WP 6.9
+* Adds ARIA attributes to the search forms.
+* Renamed the editor form block to "SearchWP Form".
+* Prevent deprecation notice in the block editor.
+* Updates deprecated jQuery methods.
+* Updates Choises.js deprecated methods.
 
 = 1.8.6 =
 * Updates deprecated jQuery methods.

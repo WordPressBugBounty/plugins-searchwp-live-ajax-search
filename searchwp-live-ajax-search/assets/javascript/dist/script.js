@@ -312,7 +312,7 @@
     						if ( self.current_request && ( self.config.abort_on_enter && e.keyCode === 13 ) ) {
     							self.current_request.abort();
     						}
-    						if ( ! jQuery.trim( self.input_el.val() ).length ) {
+    						if ( ! self.input_el.val().trim().length ) {
     							self.destroy_results();
     						} else if ( ! self.results_showing ) {
     							// If the user typed, show the results wrapper and spinner.
@@ -323,7 +323,7 @@
     						}
     						// If there are already results on display and the user is changing the search string,
     						// remove the existing results and show the spinner.
-    						if ( self.has_results && ! self.spinner_showing && self.last_string !== jQuery.trim( self.input_el.val() ) ) {
+    						if ( self.has_results && ! self.spinner_showing && self.last_string !== self.input_el.val().trim() ) {
     							self.results_el.empty();
     							self.show_spinner();
     						}

@@ -231,7 +231,7 @@
                 return;
             }
 
-            const choices = new Choices( el );
+            const choices = new Choices( el, { allowHTML: true } );
 
             if ( ! el.dataset.useAjax ) {
                 return;

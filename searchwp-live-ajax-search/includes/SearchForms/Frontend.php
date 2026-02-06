@@ -134,7 +134,12 @@ class SearchWP_Live_Search_Frontend {
 
 		self::display_styles( $form );
 		?>
-		<form id="<?php echo esc_attr( self::get_form_element_id( $form ) ); ?>" role="search" method="get" class="searchwp-form" action="<?php echo esc_url( self::get_form_action( $form ) ); ?>">
+		<form id="<?php echo esc_attr( self::get_form_element_id( $form ) ); ?>"
+			role="search"
+			method="get"
+			class="searchwp-form"
+			action="<?php echo esc_url( self::get_form_action( $form ) ); ?>"
+			aria-label="<?php echo esc_attr( __( 'Search', 'searchwp-live-ajax-search' ) ); ?>">
 			<input type="hidden" name="swp_form[form_id]" value="<?php echo absint( $form_id ); ?>">
 			<div class="swp-flex--col swp-flex--wrap swp-flex--gap-md">
 				<div class="swp-flex--row swp-items-stretch swp-flex--gap-md">
@@ -148,12 +153,18 @@ class SearchWP_Live_Search_Frontend {
 						    value="<?php echo esc_attr( $search_query ); ?>"
                             name="<?php echo esc_attr( $search_input_name ); ?>"
 						    title="<?php echo esc_attr( $form['field-label'] ); ?>"
+							aria-label="<?php echo esc_attr( __( 'Search', 'searchwp-live-ajax-search' ) ); ?>"
+							aria-required="false"
 							<?php echo ( function_exists( 'searchwp_live_search' ) && searchwp_live_search()->get( 'Settings_Api' )->get( 'enable-live-search' ) ) ? ' data-swplive="true"' : ''; ?>
                         />
 					</div>
 
 					<?php if ( ! empty( $form['search-button'] ) ) : ?>
-						<input type="submit" class="search-submit swp-button" value="<?php echo esc_attr( self::get_button_value( $form ) ); ?>"/>
+						<input type="submit"
+							class="search-submit swp-button"
+							value="<?php echo esc_attr( self::get_button_value( $form ) ); ?>"
+							aria-label="<?php echo esc_attr( ! empty( $form['button-label'] ) ? $form['button-label'] : __( 'Search', 'searchwp-live-ajax-search' ) ); ?>"
+						/>
 					<?php endif; ?>
 
 				</div>
