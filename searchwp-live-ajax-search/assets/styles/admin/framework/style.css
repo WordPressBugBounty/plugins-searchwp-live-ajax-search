@@ -7,14 +7,17 @@ layout.css
 buttons.css
  */
 
-* {
+.swp-content-container,
+.swp-content-container *,
+.wp-block-searchwp-search-form,
+.wp-block-searchwp-search-form * {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
 }
 
-body {
+.swp-content-container,
+.wp-block-searchwp-search-form {
     color: var(--neutralText);
-    border-top: 3px solid var(--primary);
 }
 
 .swp-header,

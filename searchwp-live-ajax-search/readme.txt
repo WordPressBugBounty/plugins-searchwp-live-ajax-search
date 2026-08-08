@@ -2,8 +2,8 @@
 Contributors: jchristopher, pavloopanasenko
 Tags: search, live, ajax
 Requires at least: 4.8
-Tested up to: 6.9
-Stable tag: 1.8.7
+Tested up to: 7.0
+Stable tag: 1.8.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -73,6 +73,9 @@ SearchWP Live Ajax Search uses a filter — <a href="https://searchwp.com/exten
 4. SearchWP Live Ajax Search Forms embed options
 
 == Changelog ==
+
+= 1.8.8 =
+* Improved compatibility with the WordPress 7.0 block editor so the search form's styles no longer affect the editor canvas.
 
 = 1.8.7 =
 * Updated compatibility with WP 6.9

@@ -3,12 +3,12 @@
 Plugin Name: SearchWP Live Ajax Search
 Plugin URI: https://searchwp.com/
 Description: Enhance your search forms with live search, powered by SearchWP (if installed)
-Version: 1.8.7
+Version: 1.8.8
 Requires PHP: 5.6
 Author: SearchWP
 Author URI: https://searchwp.com/
 Text Domain: searchwp-live-ajax-search
-Tested up to: 6.9
+Tested up to: 7.0
 
 Copyright 2014-2025 SearchWP, LLC
 
@@ -36,7 +36,7 @@ if ( ! defined( 'SEARCHWP_LIVE_SEARCH_VERSION' ) ) {
 	 *
 	 * @since 1.7.0
 	 */
-	define( 'SEARCHWP_LIVE_SEARCH_VERSION', '1.8.7' );
+	define( 'SEARCHWP_LIVE_SEARCH_VERSION', '1.8.8' );
 }
 
 if ( ! defined( 'SEARCHWP_LIVE_SEARCH_PLUGIN_DIR' ) ) {
